@@ -228,7 +228,7 @@ class Solution {
     		while (posLeft >= 0 && posRight < nums.length)
     		{
     			long total = nums[posLeft] + nums[i] + nums[posRight];
-    			if (total == 0) // && nums[i + 1] == 0
+    			if (total == 0)
     			{
     				returnList.add(Arrays.asList(nums[posLeft], nums[i], nums[posRight]));
 
@@ -267,7 +267,6 @@ class Solution {
     		// special case to check for 0, 0, 0 after increment, but not at beginning of array
     		if (nums[0] != 0 && nums[i - 2] == 0 && nums[i - 1] == 0 && nums[i] == 0)
     		{
-    			System.out.println("adding special case");
     			returnList.add(Arrays.asList(0, 0, 0));
     		}
     	}
