@@ -1,36 +1,35 @@
-package com.plaidman1701.leetcode.problem046;
-
-/*
-https://leetcode.com/problems/permutations/description/
-
-Given a collection of distinct numbers, return all possible permutations.
-
-For example,
-[1,2,3] have the following permutations:
-[
-  [1,2,3],
-  [1,3,2],
-  [2,1,3],
-  [2,3,1],
-  [3,1,2],
-  [3,2,1]
-]
-*/
+package com.plaidman1701.leetcode.problem047;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
-public class Problem046 {
+/*
+https://leetcode.com/problems/permutations-ii/description/
+
+Given a collection of numbers that might contain duplicates, return all possible unique permutations.
+
+For example,
+[1,1,2] have the following unique permutations:
+[
+  [1,1,2],
+  [1,2,1],
+  [2,1,1]
+]
+
+*/
+public class Problem047 {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		
 		Solution soln = new Solution();
 		
-		int[] nums = new int[] {1, 2, 3, 4};
+		int[] nums = new int[] {1, 1, 2};
 		
-		printList(soln.permute(nums));
+		printList(soln.permuteUnique(nums));
 
 	}
 	
@@ -52,7 +51,7 @@ class Solution {
 	
 	List<List<Integer>> returnList = new ArrayList<List<Integer>>();
 	
-    public List<List<Integer>> permute(int[] nums) {
+    public List<List<Integer>> permuteUnique(int[] nums) {
     	
     	List<Integer> workingList = new ArrayList<Integer>();
     	
@@ -63,7 +62,7 @@ class Solution {
     	
     	recursiveArray(0, workingList);
     	
-    	return returnList;
+    	return getList();
     }
     
     private void recursiveArray(int index, List<Integer> workingList)
@@ -91,8 +90,14 @@ class Solution {
     	returnList.add(workingList);
     }
     
+    // this is a bit of a cheat, we're burning a lot of time but it's simple to understand
     private List<List<Integer>> getList()
     {
+    	Set<List<Integer>> hs = new HashSet();
+    	hs.addAll(returnList);
+    	returnList.clear();
+    	returnList.addAll(hs);
+    	
     	return returnList;
     }
 }
