@@ -71,7 +71,8 @@ class Solution {
     	
     	int topLevels = (levels / 2) + (levels % 2);
     	int bottomLevels = (levels / 2);
-    	    	
+    	
+    	// we go thru the matrix per normal, left-to-right and top-down
     	// values going right and down, we add to a queue
     	// values going left and up, we add to a stack
     	// then we pull the values out in order
